@@ -50,6 +50,16 @@
 		qcom,mdss-pipe-rgb-xin-id = <1 5 9>;
 		qcom,mdss-pipe-dma-xin-id = <2 10>;
 
+		qcom,mdss-pipe-vig-clk-ctrl-offsets = <0x3AC 0 0>,
+			<0x3B4 0 0>,
+			<0x3BC 0 0>;
+		qcom,mdss-pipe-rgb-clk-ctrl-offsets = <0x3AC 4 8>,
+			<0x3B4 4 8>,
+			<0x3BC 4 8>;
+		qcom,mdss-pipe-dma-clk-ctrl-offsets = <0x3AC 8 12>,
+			<0x3B4 8 12>;
+
+
 		qcom,mdss-smp-data = <22 4096>;
 
 		qcom,mdss-ctl-off = <0x00000600 0x00000700 0x00000800
@@ -93,9 +103,7 @@
 		mdss_fb0: qcom,mdss_fb_primary {
 			cell-index = <0>;
 			compatible = "qcom,mdss-fb";
-			qcom,memory-reservation-type = "EBI1";
-			qcom,memory-reservation-size = <0x0000000>;	/* 0 MB allocaed for fb0 */
-			qcom,memory-alt-reservation-size = <0x1F40000>;	 /* Framebuffer reservation only for LPM or recovery boot mode */
+			linux,contiguous-region = <&fb_mem>;
 		};
 
 		mdss_fb1: qcom,mdss_fb_external {
